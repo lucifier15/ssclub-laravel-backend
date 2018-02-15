@@ -24,3 +24,11 @@ Route::post('addMember',[
 Route::get('getMembers',[
 	'uses' => 'MemberController@getMembers'
 ]);
+
+Route::post('postEvent',[
+	'uses' => 'EventsController@postEvent'
+]);
+
+Route::get('eventList',[
+	'uses' => 'EventsController@eventList'
+]);
