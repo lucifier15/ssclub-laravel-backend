@@ -32,3 +32,19 @@ Route::post('postEvent',[
 Route::get('eventList',[
 	'uses' => 'EventsController@eventList'
 ]);
+
+Route::get('getEvent/{id}',[
+	'uses' => 'EventsController@getEvent'
+]);
+
+Route::post('register',[
+	'uses' => 'EventsController@register'
+]);
+
+Route::get('getPartList',[
+	'uses' =>  'EventsController@getlist'
+]);
+
+Route::post('sendOtp',[
+	'uses' => 'EventsController@sendOtp'
+]);

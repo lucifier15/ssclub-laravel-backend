@@ -15,13 +15,18 @@ class MemberController extends Controller
         $this->validate($request,[
             'name'=>'required',
             'roll_no'=>'required',
-            'post' =>'required'
+            'post' =>'required',
+            'photo' => 'required'
         ]);
+
+        $photo_path = $request->photo->getClientOriginalName();
     	$member = new Members([
     		'name'=>$request->name,
     		'roll_no'=>$request->roll_no,
-    		'post'=>$request->post
+    		'post'=>$request->post,
+            'photo' => $photo_path
     	]);
+        $request->photo->storeAs('public/upload',$photo_path);
 
     	$member->save();
 
