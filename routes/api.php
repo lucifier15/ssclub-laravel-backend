@@ -18,7 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('addMember',[
-	'uses' => 'MemberController@addMember'
+	'uses' => 'MemberController@addMember',
+	'middleware' => 'auth.jwt'
 ]);
 
 Route::get('getMembers',[
@@ -26,11 +27,17 @@ Route::get('getMembers',[
 ]);
 
 Route::post('postEvent',[
-	'uses' => 'EventsController@postEvent'
+	'uses' => 'EventsController@postEvent',
+	'middleware' => 'auth.jwt'
+]);
+
+Route::post('deleteEvent',[
+	'uses' => 'EventsController@deleteEvent',
+	'middleware' => 'auth.jwt'
 ]);
 
 Route::get('eventList',[
-	'uses' => 'EventsController@eventList'
+	'uses' => 'EventsController@eventList',
 ]);
 
 Route::get('getEvent/{id}',[
@@ -47,4 +54,8 @@ Route::get('getPartList',[
 
 Route::post('sendOtp',[
 	'uses' => 'EventsController@sendOtp'
+]);
+
+Route::post('admin/signin',[
+	'uses' => 'UserController@adminsignin'
 ]);

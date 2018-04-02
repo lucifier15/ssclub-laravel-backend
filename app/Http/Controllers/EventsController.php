@@ -7,6 +7,8 @@ use App\Events;
 use App\Participants;
 use App\Mail\SSClubOTP;
 use Illuminate\Support\Facades\Mail;
+use JWTAuth;
+use DB;
 
 class EventsController extends Controller
 {
@@ -14,6 +16,7 @@ class EventsController extends Controller
 
     public function postEvent(Request $request){
 
+        $user = JWTAuth::parseToken()->toUser();
     	$this->validate($request,[
     		'title' => 'required',
     		'date' => 'required',
@@ -23,7 +26,17 @@ class EventsController extends Controller
     	$event = new Events([
     		'title'=>$request->title,
     		'date'=>$request->date,
-    		'venue'=>$request->venue
+    		'venue'=>$request->venue,
+            'rule1'=>$request->rule1,
+            'rule2'=>$request->rule2,
+            'rule3'=>$request->rule3,
+            'rule4'=>$request->rule4,
+            'rule5'=>$request->rule5,
+            'rule6'=>$request->rule6,
+            'rule7'=>$request->rule7,
+            'rule8'=>$request->rule8,
+            'rule9'=>$request->rule9,
+            'rule10'=>$request->rule10
     	]);
 
     	$event->save();
@@ -31,6 +44,17 @@ class EventsController extends Controller
     	return response()->json([
     		'message' => 'Event posted successfully'
     	],201);
+    }
+
+    //delete an event
+    public function deleteEvent(Request $request)
+    {
+        $id = $request->id;
+        DB::table('events')->where('id',$id)->delete();
+
+        return response()->json([
+            'message' => 'Event deleted successfully'
+        ],201);
     }
 
     // fetch all events list with details

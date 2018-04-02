@@ -18,6 +18,16 @@ class CreateEventsTable extends Migration
             $table->string('title');
             $table->string('date');
             $table->string('venue');
+            $table->string('rule1');
+            $table->string('rule2');
+            $table->string('rule3');
+            $table->string('rule4');
+            $table->string('rule5');
+            $table->string('rule6');
+            $table->string('rule7');
+            $table->string('rule8');
+            $table->string('rule9');
+            $table->string('rule10');
             $table->timestamps();
         });
     }
