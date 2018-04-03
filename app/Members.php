@@ -8,5 +8,5 @@ class Members extends Model
 {
     //members
 
-    protected $fillable=['name','roll_no','post','photo'];
+    protected $fillable=['name','roll_no','post'];
 }
