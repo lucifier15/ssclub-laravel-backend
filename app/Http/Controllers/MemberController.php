@@ -16,7 +16,6 @@ class MemberController extends Controller
             'name'=>'required',
             'roll_no'=>'required',
             'post' =>'required',
-            'photo' => 'required'
         ]);
 
         $photo_path = $request->photo->getClientOriginalName();
