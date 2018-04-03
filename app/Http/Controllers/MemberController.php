@@ -23,9 +23,8 @@ class MemberController extends Controller
     		'name'=>$request->name,
     		'roll_no'=>$request->roll_no,
     		'post'=>$request->post,
-            'photo' => $photo_path
     	]);
-        $request->photo->storeAs('public/upload',$photo_path);
+        // $request->photo->storeAs('public/upload',$photo_path);
 
     	$member->save();
 
