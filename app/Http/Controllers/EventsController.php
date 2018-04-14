@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Events;
 use App\Participants;
 use App\Mail\SSClubOTP;
+use App\Mail\RegistrationSuccessfull;
 use Illuminate\Support\Facades\Mail;
 use JWTAuth;
 use DB;
@@ -115,6 +116,8 @@ class EventsController extends Controller
             return response()->json([
                 'message' => 'Registered Successfully'
             ],201);
+
+            Mail::to($request->email)->send(new RegistrationSuccessfull());
         }
     }
 

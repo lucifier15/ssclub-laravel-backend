@@ -17,45 +17,45 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('addMember',[
+Route::post('addMember',[						//add a member
 	'uses' => 'MemberController@addMember',
 	'middleware' => 'auth.jwt'
 ]);
 
-Route::get('getMembers',[
+Route::get('getMembers',[						//get all members
 	'uses' => 'MemberController@getMembers'
 ]);
 
-Route::post('postEvent',[
+Route::post('postEvent',[						//post a new event
 	'uses' => 'EventsController@postEvent',
 	'middleware' => 'auth.jwt'
 ]);
 
-Route::post('deleteEvent',[
+Route::post('deleteEvent',[						//delete an event
 	'uses' => 'EventsController@deleteEvent',
 	'middleware' => 'auth.jwt'
 ]);
 
-Route::get('eventList',[
+Route::get('eventList',[						//get all events
 	'uses' => 'EventsController@eventList',
 ]);
 
-Route::get('getEvent/{id}',[
+Route::get('getEvent/{id}',[					//fetch event by id
 	'uses' => 'EventsController@getEvent'
 ]);
 
-Route::post('register',[
+Route::post('register',[						//register for an event
 	'uses' => 'EventsController@register'
 ]);
 
-Route::get('getPartList',[
+Route::get('getPartList',[						//get all participants list
 	'uses' =>  'EventsController@getlist'
 ]);
 
-Route::post('sendOtp',[
+Route::post('sendOtp',[							//send otp
 	'uses' => 'EventsController@sendOtp'
 ]);
 
-Route::post('admin/signin',[
+Route::post('admin/signin',[					//admin signin
 	'uses' => 'UserController@adminsignin'
 ]);
