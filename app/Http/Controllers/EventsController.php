@@ -113,11 +113,11 @@ class EventsController extends Controller
         else{
             $participant->save();
 
+            Mail::to($request->email)->send(new RegistrationSuccessfull());
+
             return response()->json([
                 'message' => 'Registered Successfully'
             ],201);
-
-            Mail::to($request->email)->send(new RegistrationSuccessfull());
         }
     }
 
